@@ -10,6 +10,7 @@ builder.Services.AddSingleton<JsonFileService>();
 
 builder.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddCors();
 
 var app = builder.Build();
 

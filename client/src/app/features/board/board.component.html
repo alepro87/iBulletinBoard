@@ -1,16 +1,20 @@
 @if (advertisements) {
 <div class="flex flex-col gap-3">
     <div class="flex justify-between gap-3">
-        <form #searchForm="ngForm" (ngSubmit)="osSearchChange()"
-            class="relative flex items-center w-full max-w-2xl mx-0">
+        <form #searchForm="ngForm" (ngSubmit)="onSearchChange()"
+            class="relative flex items-center w-full max-w-3xl mx-2">
             <input type="search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg"
                 placeholder="Search" name="search" [(ngModel)]="boardParams.search" />
-            <button mat-icon-button type="submit" class="absolute inset-y-2 right-8 top-2 flex items-center pl-3">
+            <button mat-icon-button type="submit" class="absolute right-20 top-0 flex items-center pl-0">
                 <mat-icon>search</mat-icon>
             </button>
         </form>
 
         <div class="flex gap-3">
+            <button class="match-input-height" mat-raised-button color="primary" (click)="openAdvertisementForm()">
+                <mat-icon>add</mat-icon>
+                Add Advertisement
+            </button>
             <button class="match-input-height" mat-stroked-button (click)="openFiltersDialog()">
                 <mat-icon>filter_list</mat-icon>
                 Filters
@@ -24,7 +28,10 @@
 
     <div class="grid grid-cols-5 gap-4">
         @for (advertisement of advertisements.data; track advertisement.id) {
-        <app-advertisement-item [advertisement]="advertisement"></app-advertisement-item>
+        <app-advertisement-item [advertisement]="advertisement" 
+            (edit)="openAdvertisementForm($event)"
+            (delete)="deleteAdvertisement($event)">
+        </app-advertisement-item>
         }
     </div>
 

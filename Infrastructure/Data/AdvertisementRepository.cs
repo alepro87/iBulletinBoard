@@ -31,6 +31,7 @@ public class AdvertisementRepository(JsonFileService jsonFileService) : IAdverti
         {
             "dateAsc" => query.OrderBy(a => a.PostDate),
             "dateDesc" => query.OrderByDescending(a => a.PostDate),
+            "title" => query.OrderBy(a => a.Title),
             _ => query.OrderBy(a => a.Id)
         };
 
@@ -78,38 +79,51 @@ public class AdvertisementRepository(JsonFileService jsonFileService) : IAdverti
                 ? m_Advertisements.Max(a => a.Id) + 1
                 : 1;
         }
-        advertisement.PostDate = DateTime.Now;
+        // Get local timezone
+        var localZone = TimeZoneInfo.Local;
+        // Convert UTC to local time
+        var localTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, localZone);
+        advertisement.PostDate = localTime.ToString("dd MMM yyyy 'at' HH:mm");
+        //advertisement.PostDate = DateTime.Now.ToString("MMM dd YYYY at HH:mm");
         m_Advertisements.Add(advertisement);
     }
 
     // Update existing advertisement in in-memory cache
     // Replace old version with new version
-    public void UpdateAdvertisement(Advertisement advertisement) {
+    public void UpdateAdvertisement(Advertisement advertisement)
+    {
         var existingAd = m_Advertisements.FirstOrDefault(a => a.Id == advertisement.Id);
 
-        if (existingAd != null) {
+        if (existingAd != null)
+        {
             m_Advertisements.Remove(existingAd);
             m_Advertisements.Add(advertisement);
         }
     }
 
     // Remove advertisement from in-memory cache
-    public void DeleteAdvertisement(Advertisement advertisement) {
+    public void DeleteAdvertisement(Advertisement advertisement)
+    {
         m_Advertisements.Remove(advertisement);
     }
 
     // Check if the advertisement with given ID exists in-memory cache
-    public async Task<bool> AdvertisementExists(int id) {
+    public async Task<bool> AdvertisementExists(int id)
+    {
         return await Task.FromResult(m_Advertisements.Any(a => a.Id == id));
     }
 
     // Save all changes from in-memory cache to JSON file
     // Return true if successful, false if failed
-    public async Task<bool> SaveChangesAsync() {
-        try {
+    public async Task<bool> SaveChangesAsync()
+    {
+        try
+        {
             await jsonFileService.SaveAllAsync(m_Advertisements);
             return true;
-        } catch {
+        }
+        catch
+        {
             return false;
         }
     }

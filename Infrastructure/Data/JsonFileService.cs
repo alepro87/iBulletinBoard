@@ -7,7 +7,7 @@ namespace Infrastructure.Data;
 public class JsonFileService
 {
     private readonly string m_BaseFilePath;
-    private readonly object m__Lock = new object();
+    private readonly object m_Lock = new object();
 
     public JsonFileService(string baseFilePath = "Data")
     {
@@ -19,7 +19,7 @@ public class JsonFileService
 
     public List<T> GetAll<T>() where T : BaseEntity
     {
-        lock (m__Lock)
+        lock (m_Lock)
         {
             var filePath = GetFilePath<T>();
             if (!File.Exists(filePath))

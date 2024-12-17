@@ -1,14 +1,20 @@
-<header class="border-b shadow-md p-3 w-full min-h-60 fixed top-0 z-50 bg-white">
+<header class="border-b shadow-md p-3 w-full min-h-60 max-h-60 fixed top-0 z-50 bg-white">
     <img src="/images/headerBackground.png" alt=""
         class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center">
     <div class="align-middle place-items-center max-w-screen-2xl mx-auto">
-        <div class="align-middle justify-between w-72 bg-white bg-opacity-70">
-            <h1 class="text-3xl font-serif mb-2">What's good</h1>
-            <h1 class="text-4xl font-semibold mb-2">IN THE HOOD !</h1>
+        <div class="flex justify-between w-auto bg-white bg-opacity-70 mt-5">
+            <div class="align-middle m-4 justify-between w-2/5">
+                <h1 class="text-3xl font-serif mb-2">What's good</h1>
+                <h1 class="text-4xl font-semibold mb-2">IN THE HOOD !</h1>
+            </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div class="align-middle m-4 justify-between w-96">
+                <h3 class="text-xl text-center font-normal capitalize mb-2">Read & share posts in your own neighbourhood on a pinboard based on your location</h3>
+            </div>
         </div>
     </div>
 </header>
 
 @if (busyService.loading) {
-<mat-progress-bar mode="indeterminate" class="fixed top-20 z-50"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" class="fixed top-64 z-50"></mat-progress-bar>
 }

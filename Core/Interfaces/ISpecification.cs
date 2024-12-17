@@ -16,5 +16,5 @@ public interface ISpecification<T>
 
 public interface ISpecification<T, TResult> : ISpecification<T>
 {
-    Expression<Func<T, TResult>> Select { get; }
+    Expression<Func<T, TResult>>? Select { get; }
 }

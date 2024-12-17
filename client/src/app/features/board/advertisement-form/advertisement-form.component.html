@@ -1,0 +1,30 @@
+<mat-card class="max-w-lg mx-auto p-8 bg-white">
+  <form [formGroup]="advertisementForm" (ngSubmit)="onSubmit()">
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-semibold text-primary">{{ isEditMode ? 'Edit Advertisement' : 'Create New Advertisement'
+        }}</h1>
+    </div>
+    <app-text-input lable="Title" formControlName="title" />
+    <app-text-input lable="Description" formControlName="description" />
+    <app-text-input lable="Picture Url" formControlName="pictureUrl" />
+    <app-text-input lable="Category" formControlName="category" />
+    <app-text-input lable="Location" formControlName="location" />
+    <app-text-input lable="Author name" formControlName="author" />
+    <app-text-input lable="Email address" formControlName="authorEmail" />
+
+    @if (validationErrors) {
+    <div class="mb-3 p-4 bg-red-100 text-red-600">
+      <ul class="list-disc px-3">
+        @for (error of validationErrors; track $index) {
+        <li>{{error}}</li>
+        }
+      </ul>
+    </div>
+    }
+    <div class="flex justify-between">
+      <button mat-button type="button" (click)="dialogRef.close()" class="w-3/7 py-1">Cancel</button>
+      <button [disabled]="advertisementForm.invalid" mat-flat-button type="submit"
+        class="w-3/4 py-1">Submit</button>
+    </div>
+  </form>
+</mat-card>

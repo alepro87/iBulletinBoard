@@ -55,4 +55,19 @@ export class BoardService {
       next: response => this.locations = response
     })
   }
+
+  // Add new advertisement
+  createAdvertisement(advertisement: Advertisement) {
+    return this.http.post<Advertisement>(this.baseUrl + 'advertisements', advertisement);
+  }
+
+  // Update existing advertisement
+  updateAdvertisement(id: number, advertisement: Advertisement) {
+    return this.http.put<Advertisement>(this.baseUrl + 'advertisements/' + id, advertisement);
+  }
+
+  // Delete advertisement
+  deleteAdvertisement(id: number) {
+    return this.http.delete(this.baseUrl + 'advertisements/' + id);
+  }
 }

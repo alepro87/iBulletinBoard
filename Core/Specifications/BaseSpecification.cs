@@ -58,7 +58,7 @@ public class BaseSpecification<T, TResult>(Expression<Func<T, bool>>? criteria)
     protected BaseSpecification() : this(null) { }
     public Expression<Func<T, TResult>>? Select { get; private set; }
 
-    protected void AddSelect(Expression<Func<T, TResult>> selectExpression)
+    protected void AddSelect(Expression<Func<T, TResult>>? selectExpression)
     {
         Select = selectExpression;
     }

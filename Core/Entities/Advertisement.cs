@@ -9,6 +9,8 @@ public class Advertisement : BaseEntity
     public required string Description { get; set; }
     public string? PictureUrl { get; set; }
     public required string Category { get; set; }
-    public DateTime PostDate { get; set; }
+    public required string PostDate { get; set; }
     public required string Location { get; set; }
+    public string? Author { get; set; }
+    public string? AuthorEmail { get; set; }
 }

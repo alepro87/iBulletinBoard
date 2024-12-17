@@ -6,7 +6,7 @@ namespace Core.Specifications;
 public class AdvertisementSpecification : BaseSpecification<Advertisement>
 {
     public AdvertisementSpecification(AdvertisementSpecParams specParams) : base(x =>
-        (string.IsNullOrEmpty(specParams.Search) || x.Title.ToLower().Contains(specParams.Search)) &&
+        (string.IsNullOrEmpty(specParams.Search) || x.Title.ToLower().Contains(specParams.Search) || x.Location.ToLower().Contains(specParams.Search)) &&
         (specParams.Categories.Count == 0 || specParams.Categories.Contains(x.Category)) &&
         (specParams.Locations.Count == 0 || specParams.Locations.Contains(x.Location))
     )
@@ -20,6 +20,9 @@ public class AdvertisementSpecification : BaseSpecification<Advertisement>
                 break;
             case "dateDesc":
                 AddOrderByDescending(x => x.PostDate);
+                break;
+            case "title":
+                AddOrderBy(x => x.Title);
                 break;
             default:
                 AddOrderBy(x => x.Id);

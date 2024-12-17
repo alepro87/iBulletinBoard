@@ -6,4 +6,6 @@ export type Advertisement = {
     location: string;
     category: string;
     postDate: Date;
+    author: string;
+    authorEmail: string;
 }
