@@ -1,13 +1,11 @@
 @if (advertisements) {
 <div class="flex flex-col gap-3">
     <div class="flex justify-between gap-3">
-
-
         <form #searchForm="ngForm" (ngSubmit)="osSearchChange()"
-            class="relative flex items-center w-full max-w-md mx-4">
+            class="relative flex items-center w-full max-w-2xl mx-0">
             <input type="search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg"
                 placeholder="Search" name="search" [(ngModel)]="boardParams.search" />
-            <button mat-icon-button type="submit" class="absolute inset-y-0 right-8 top-2 flex items-center pl-3">
+            <button mat-icon-button type="submit" class="absolute inset-y-2 right-8 top-2 flex items-center pl-3">
                 <mat-icon>search</mat-icon>
             </button>
         </form>
