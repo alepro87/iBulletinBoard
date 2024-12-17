@@ -18,7 +18,6 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-board',
   standalone: true,
   imports: [
-    MatCard,
     AdvertisementItemComponent,
     MatButton,
     MatIcon,
