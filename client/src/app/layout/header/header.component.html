@@ -1,22 +1,14 @@
-<header class="border-b shadow-md p-3 w-full max-h-20 fixed top-0 z-50 bg-white">
-    <div class="flex align-middle items-center justify-between max-w-screen-2xl mx-auto">
-        <img routerLink="/" src="/images/logo.png" alt="app logo" class="max-h-16">
-        <nav class="flex gap-3 uppercase text-xl">
-            <a routerLink="/" 
-                routerLinkActive="active">Home</a>
-            <a routerLink="/shop" routerLinkActive="active">Shop</a>
-            <a routerLink="/test-error" routerLinkActive="active">Errors</a>
-        </nav>
-        <div class="flex gap-3 align-middle">
-            <a routerLink="/cart" 
-                routerLinkActive="active" 
-                matBadgeSize="large" 
-                class="custom-badge mt-2 mr-2">
-            </a>
+<header class="border-b shadow-md p-3 w-full min-h-60 fixed top-0 z-50 bg-white">
+    <img src="/images/headerBackground.png" alt=""
+        class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center">
+    <div class="align-middle place-items-center max-w-screen-2xl mx-auto">
+        <div class="align-middle justify-between w-72 bg-white bg-opacity-70">
+            <h1 class="text-3xl font-serif mb-2">What's good</h1>
+            <h1 class="text-4xl font-semibold mb-2">IN THE HOOD !</h1>
         </div>
     </div>
 </header>
 
 @if (busyService.loading) {
-    <mat-progress-bar mode="indeterminate" class="fixed top-20 z-50"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" class="fixed top-20 z-50"></mat-progress-bar>
 }
