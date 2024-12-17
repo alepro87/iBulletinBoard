@@ -8,15 +8,19 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { TextInputComponent } from "../../../shared/components/text-input/text-input.component";
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-advertisement-form',
   standalone: true,
   imports: [
+    MatCard,
     ReactiveFormsModule,
+    MatInputModule,
     MatButtonModule,
     MatDialogModule,
-    MatCard,
+    CommonModule,
     TextInputComponent
   ],
   templateUrl: './advertisement-form.component.html',

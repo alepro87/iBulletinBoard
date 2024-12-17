@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Advertisement } from '../../shared/models/advertisement';
 import { BoardParams } from '../../shared/models/boardParams';
 import { Pagination } from '../../shared/models/pagination';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Pagination } from '../../shared/models/pagination';
 export class BoardService {
   baseUrl = 'https://localhost:5001/api/'
   private http = inject(HttpClient);
+  private userService = inject(UserService);
   locations: string[] = [];
   categories: string[] = [];
 
@@ -56,8 +58,14 @@ export class BoardService {
     })
   }
 
+  isOwner(advertisement: Advertisement): boolean {
+    const currentUserEmail = this.userService.getUserEmail();
+    return advertisement.authorEmail === currentUserEmail;
+  }
+
   // Add new advertisement
   createAdvertisement(advertisement: Advertisement) {
+    this.userService.setUserEmail(advertisement.authorEmail);
     return this.http.post<Advertisement>(this.baseUrl + 'advertisements', advertisement);
   }
 

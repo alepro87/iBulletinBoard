@@ -30,15 +30,15 @@
             </div>
         </div>
     </mat-card-content>
-    @if (isOwner) {
+    @if (canModify) {
     <mat-card-content class="mt-2">
         <!-- Action buttons - show only for user's own advertisements -->
         <div class="flex gap-3 justify-evenly">
-            <button mat-raised-button color="primary" (click)="onEdit()" class="relative z-10 rounded-sm py-1.5 font-medium text-gray-600 hover:bg-gray-200">
+            <button mat-raised-button color="primary" (click)="onEdit($event)" class="relative z-10 rounded-sm py-1.5 font-medium text-gray-600 hover:bg-gray-200">
                 <mat-icon>edit</mat-icon>
                 Edit
             </button>
-            <button mat-raised-button color="warn" (click)="onDelete()" class="relative z-10 rounded-sm py-1.5 font-medium text-gray-600 hover:bg-gray-200">
+            <button mat-raised-button color="warn" (click)="onDelete($event)" class="relative z-10 rounded-sm py-1.5 font-medium text-gray-600 hover:bg-gray-200">
                 <mat-icon>delete</mat-icon>
                 Delete
             </button>

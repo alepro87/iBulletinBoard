@@ -108,7 +108,9 @@ export class BoardComponent {
   openAdvertisementForm(advertisement?: Advertisement) {
     const dialogRef = this.dialogService.open(AdvertisementFormComponent, {
       minWidth: '500px',
-      data: { advertisement }
+      data: { advertisement },
+      autoFocus: false,
+      restoreFocus: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -131,5 +133,9 @@ export class BoardComponent {
         }
       });
     }
+  }
+
+  refreshData() {
+    this.getAdvertisements();
   }
 }

@@ -29,8 +29,8 @@
     <div class="grid grid-cols-5 gap-4">
         @for (advertisement of advertisements.data; track advertisement.id) {
         <app-advertisement-item [advertisement]="advertisement" 
-            (edit)="openAdvertisementForm($event)"
-            (delete)="deleteAdvertisement($event)">
+            
+            (refresh)="refreshData()">
         </app-advertisement-item>
         }
     </div>
