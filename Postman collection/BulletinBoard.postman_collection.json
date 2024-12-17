@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "aa1ce166-b51f-47bf-8b05-27d8cd2e648f",
+		"name": "BulletinBoard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37712411"
+	},
+	"item": [
+		{
+			"name": "Add Advertisement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"{{$randomCatchPhrase}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"pictureUrl\": \"https://picsum.photos/640/480?random=10\",\r\n    \"location\": \"{{$randomCity}}\",\r\n    \"category\": \"Events\",\r\n    \"postDate\": \"2024-11-27T13:35:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/api/advertisements"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Advertisements",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/api/advertisements"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Advertisement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/api/advertisements/3"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete advertisement",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{url}}/api/advertisements/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Update advertisement",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"title\": \"{{$randomProduct}} Updated\",\n    \"description\": \"{{$randomLoremParagraph}}\",\n    \"pictureUrl\": \"{{$randomImageUrl}}\",\n    \"location\": \"Ashdod\",\n    \"category\": \"Lost and found\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/api/advertisements/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/api/advertisements/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/api/advertisements/locations"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Advertisements sorted by category asc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/advertisements?sort=dateDesc",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"advertisements"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "dateDesc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Advertisements by Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/advertisements?category=Events",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"advertisements"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Events"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Advertisements with search term",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/advertisements?search=bus",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"advertisements"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "bus"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Advertisements by Location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/advertisements?location=\"Tel-Aviv\"",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"advertisements"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "\"Tel-Aviv\""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost:5001",
+			"type": "string"
+		}
+	]
+}
